@@ -18,6 +18,9 @@ module.exports = {
       },
       fontFamily: {
         text: 'Hanken Grotesk, serif'
+      },
+      spacing: {
+        430: '430px'
       }
     },
   },
