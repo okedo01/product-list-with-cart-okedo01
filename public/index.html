@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+  <link rel="stylesheet" href="./styles.css">
+  
+  <title>Frontend Mentor | Product list with cart</title>
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <style>
+    .attribution { font-size: 11px; text-align: center; }
+    .attribution a { color: hsl(228, 45%, 44%); }
+  </style>
+</head>
+<body class="bg-rose100 grid place-items-center w-full my-20 mx-auto">
+
+  <div class="container flex gap-20">
+    <div class="wrapper">
+      <h1 class="mb-4 text-xl text-rose900">Desserts</h1>
+      <div class="list-items grid grid-cols-3 gap-10 max-w-6xl w-full">
+        <div>
+            <img src="./assets/images/image-baklava-desktop.jpg" alt="Baklava" class="rounded-2xl">
+          <div class="add-to-cart">
+            <img src="./assets/images/icon-add-to-cart.svg" alt="add-to-cart">
+            <div>Add to Cart</div>
+          </div>
+          <div>
+            <h4>Baklava</h4>
+            <p>Pistachio Baklava</p>
+            <div>$4.00</div>
+          </div>
+        </div>
+
+        <div>
+            <img src="./assets/images/image-baklava-desktop.jpg" alt="Baklava">
+          <div class="add-to-cart">
+            <img src="./assets/images/icon-add-to-cart.svg" alt="add-to-cart">
+            <div>Add to Cart</div>
+          </div>
+          <div>
+            <h4>Baklava</h4>
+            <p>Pistachio Baklava</p>
+            <div>$4.00</div>
+          </div>
+        </div>
+
+        <div>
+            <img src="./assets/images/image-baklava-desktop.jpg" alt="Baklava">
+          <div class="add-to-cart">
+            <img src="./assets/images/icon-add-to-cart.svg" alt="add-to-cart">
+            <div>Add to Cart</div>
+          </div>
+          <div>
+            <h4>Baklava</h4>
+            <p>Pistachio Baklava</p>
+            <div>$4.00</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cart bg-rose50 w-96">
+      <div class="cart-empty">
+        <h3>Your cart <span id="quantity">(0)</span></h3>
+        <img src="./assets/images/illustration-empty-cart.svg" alt="cart-empty">
+        <p>Your added items will appear here</p>
+      </div>
+  
+      <div class="cart-selected hidden">
+        <h3>Your cart <span id="quantity">(0)</span></h3>
+        <div class="selected-items">
+  
+        </div>
+        <div class="total"></div>
+        <div class="carbon-neutral">
+          <img src="./assets/images/icon-carbon-neutral.svg" alt="carbon-neutral">
+          <p>This is a <span>carbon-neutral</span> delivery</p>
+        </div>
+        <button class="btn">Confirm Order</button>
+      </div>
+  
+      <div class="order-confirmed hidden">
+        <img src="./assets/images/icon-order-confirmed.svg" alt="order-confirmed">
+        <h1>Order-Confirmed</h1>
+        <p>We hope you enjoy your food</p>
+        <div class="selected-items">
+  
+        </div>
+        <button class="btn">Start new Order</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Desserts
+
+  Waffle with Berries
+  Waffle
+  6.50
+  Add to Cart
+
+  Vanilla Bean Crème Brûlée
+  Crème Brûlée
+  7.00
+  Add to Cart
+
+  Macaron Mix of Five
+  Macaron
+  8.00
+  Add to Cart
+
+  Classic Tiramisu
+  Tiramisu
+  5.50
+  Add to Cart
+
+  Pistachio Baklava
+  Baklava
+  4.00
+  Add to Cart
+
+  Lemon Meringue Pie
+  Pie
+  5.00
+  Add to Cart
+
+  Red Velvet Cake
+  Cake
+  4.50
+  Add to Cart
+
+  Salted Caramel Brownie
+  Brownie
+  4.50
+  Add to Cart
+
+  Vanilla Panna Cotta
+  Panna Cotta
+  6.50
+  Add to Cart
+
+  Your Cart (<!-- Quantity -->)
+  <!-- Your added items will appear here  -->
+
+  <footer class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge">Frontend Mentor</a>. 
+    Coded by <a href="https://github.com/okedo01">Eliah &copf;right <span id="year"></span></a>.
+  </footer>
+  <script>
+    const getYear = () => {
+      const year = document.getElementById('year');
+      const now = new Date();
+
+      year.innerHTML = now.getFullYear();
+    }
+    getY
