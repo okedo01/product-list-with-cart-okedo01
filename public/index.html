@@ -2,27 +2,26 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
   <link rel="stylesheet" href="./styles.css">
   
   <title>Frontend Mentor | Product list with cart</title>
 
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
   <style>
     .attribution { font-size: 11px; text-align: center; }
     .attribution a { color: hsl(228, 45%, 44%); }
   </style>
 </head>
-<body class="bg-rose100 grid place-items-center w-full my-20 mx-auto">
+<body class="bg-rose100 grid place-items-center max-w-1400 w-full my-20 mx-32">
 
-  <div class="container flex gap-20">
-    <div class="wrapper">
+  <div class="container grid grid-cols-4 gap-20">
+    <div class="wrapper w-full col-span-3">
       <h1 class="mb-4 text-3xl text-rose900 bold">Desserts</h1>
-      <div class="list-items grid grid-cols-3 gap-10 max-w-6xl w-full">
+      <div class="list-items w-full">
         <div class="">
-            <img src="./assets/images/image-baklava-desktop.jpg" alt="Baklava" class="relative rounded-2xl">
+            <img src="./assets/images/image-baklava-desktop.jpg" alt="Baklava" class="relative rounded-2xl w-96">
           <div class="add-to-cart flex justify-center items-center gap-4 bg-rose50 rounded-3xl px-7 py-3">
             <img src="./assets/images/icon-add-to-cart.svg" alt="add-to-cart">
             <div>Add to Cart</div>
@@ -34,35 +33,10 @@
           </div>
         </div>
 
-        <div>
-            <img src="./assets/images/image-baklava-desktop.jpg" alt="Baklava" class="rounded-2xl">
-          <div class="add-to-cart flex justify-center items-center gap-4 bg-rose50 rounded-3xl px-7 py-3">
-            <img src="./assets/images/icon-add-to-cart.svg" alt="add-to-cart">
-            <div>Add to Cart</div>
-          </div>
-          <div class="mt-4">
-            <h4 class="text-rose400 text-sm">Baklava</h4>
-            <p class="text-rose900">Pistachio Baklava</p>
-            <div class="text-primary">$4.00</div>
-          </div>
-        </div>
-
-        <div>
-            <img src="./assets/images/image-baklava-desktop.jpg" alt="Baklava" class="rounded-2xl">
-          <div class="add-to-cart flex justify-center items-center gap-4 bg-rose50 rounded-3xl px-7 py-3">
-            <img src="./assets/images/icon-add-to-cart.svg" alt="add-to-cart">
-            <div>Add to Cart</div>
-          </div>
-          <div class="mt-4">
-            <h4 class="text-rose400 text-sm">Baklava</h4>
-            <p class="text-rose900">Pistachio Baklava</p>
-            <div class="text-primary">$4.00</div>
-          </div>
-        </div>
       </div>
     </div>
 
-    <div class="cart bg-rose50 w-96">
+    <div class="cart bg-rose50 col-span-1">
       <div class="cart-empty">
         <h3>Your cart <span id="quantity">(0)</span></h3>
         <img src="./assets/images/illustration-empty-cart.svg" alt="cart-empty">
@@ -94,59 +68,9 @@
     </div>
   </div>
 
-  <!-- Desserts
-
-  Waffle with Berries
-  Waffle
-  6.50
-  Add to Cart
-
-  Vanilla Bean Crème Brûlée
-  Crème Brûlée
-  7.00
-  Add to Cart
-
-  Macaron Mix of Five
-  Macaron
-  8.00
-  Add to Cart
-
-  Classic Tiramisu
-  Tiramisu
-  5.50
-  Add to Cart
-
-  Pistachio Baklava
-  Baklava
-  4.00
-  Add to Cart
-
-  Lemon Meringue Pie
-  Pie
-  5.00
-  Add to Cart
-
-  Red Velvet Cake
-  Cake
-  4.50
-  Add to Cart
-
-  Salted Caramel Brownie
-  Brownie
-  4.50
-  Add to Cart
-
-  Vanilla Panna Cotta
-  Panna Cotta
-  6.50
-  Add to Cart
-
-  Your Cart (<!-- Quantity -->)
-  <!-- Your added items will appear here  -->
-
   <footer class="attribution">
     Challenge by <a href="https://www.frontendmentor.io?ref=challenge">Frontend Mentor</a>. 
-    Coded by <a href="https://github.com/okedo01">Eliah &copf;right <span id="year"></span></a>.
+    Coded by <a href="https://github.com/okedo01" target="_blank">Eliah &copf;right <span id="year"></span></a>.
   </footer>
   <script>
     const getYear = () => {
@@ -157,5 +81,6 @@
     }
     getYear();
   </script>
+  <script src="./sandbox.js"></script>
 </body>
 </html>

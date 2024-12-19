@@ -3,6 +3,13 @@ module.exports = {
   content: ["./public/**/*.{html,js}"],
   theme: {
     extend: {
+      maxWidth: {
+        1400: '1400px'
+      },
+      width: {
+        1000: '1000px',
+        400: '400px'
+      },
       colors: {
         primary: 'hsl(14, 86%, 42%)',
         secondary: 'hsl(159, 69%, 38%)',
