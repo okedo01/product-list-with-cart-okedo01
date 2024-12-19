@@ -17,15 +17,15 @@
 <body class="bg-rose100 grid place-items-center max-w-1400 w-full my-20 mx-32">
 
   <div class="container grid grid-cols-4 gap-20">
-    <div class="wrapper w-full col-span-3">
+    <div class="wrapper col-span-3">
       <h1 class="mb-4 text-3xl text-rose900 bold">Desserts</h1>
-      <div class="list-items w-full">
+      <div class="list-items grid grid-cols-3 gap-x-5 w-full">
         <div class="">
-            <img src="./assets/images/image-baklava-desktop.jpg" alt="Baklava" class="relative rounded-2xl w-96">
-          <div class="add-to-cart flex justify-center items-center gap-4 bg-rose50 rounded-3xl px-7 py-3">
+            <img src="./assets/images/image-baklava-desktop.jpg" alt="Baklava" class="rounded-2xl">
+          <button class="add-to-cart flex justify-center items-center gap-4 bg-rose50 rounded-3xl px-7 py-3">
             <img src="./assets/images/icon-add-to-cart.svg" alt="add-to-cart">
             <div>Add to Cart</div>
-          </div>
+          </button>
           <div class="mt-4">
             <h4 class="text-rose400 text-sm">Baklava</h4>
             <p class="text-rose900">Pistachio Baklava</p>
@@ -36,24 +36,32 @@
       </div>
     </div>
 
-    <div class="cart bg-rose50 col-span-1">
-      <div class="cart-empty">
-        <h3>Your cart <span id="quantity">(0)</span></h3>
-        <img src="./assets/images/illustration-empty-cart.svg" alt="cart-empty">
-        <p>Your added items will appear here</p>
+    <div class="cart col-span-1 w-400 max-h-450 h-full px-7 bg-rose50">
+      <div class="cart-empty hidden">
+        <h3 class="py-5 text-primary text-xl text-center">Your cart <span id="quantity">(0)</span></h3>
+        <img src="./assets/images/illustration-empty-cart.svg" alt="cart-empty" class="my-16 mx-auto w-56">        
+        <p class="text-rose400 text-center">Your added items will appear here</p>
       </div>
   
-      <div class="cart-selected hidden">
-        <h3>Your cart <span id="quantity">(0)</span></h3>
+      <div class="cart-selected">
+        <h3 class="py-5 text-primary text-xl text-center">Your cart <span id="quantity">(0)</span></h3>
         <div class="selected-items">
-  
+          <p>Lorem ipsum dolor sit amet.</p>
+          <p>Lorem ipsum dolor sit amet.</p>
+          <p>Lorem ipsum dolor sit amet.</p>
+          <p>Lorem ipsum dolor sit amet.</p>
         </div>
-        <div class="total"></div>
-        <div class="carbon-neutral">
+        <div class="flex justify-between mt-5">
+          <p>Order total:</p>
+          <div class="total">
+            $40.5
+          </div>
+        </div>
+        <div class="carbon-neutral flex justify-center items-center gap-3 bg-rose100 m-5 px-5 py-2 rounded-lg">
           <img src="./assets/images/icon-carbon-neutral.svg" alt="carbon-neutral">
-          <p>This is a <span>carbon-neutral</span> delivery</p>
+          <p class="text-rose400">This is a <span class="text-rose900">carbon-neutral</span> delivery</p>
         </div>
-        <button class="btn">Confirm Order</button>
+        <button class="btn rounded-3xl bg-primary text-rose50 text-lg mt-20 py-3 w-full">Confirm Order</button>
       </div>
   
       <div class="order-confirmed hidden">

@@ -10,6 +10,9 @@ module.exports = {
         1000: '1000px',
         400: '400px'
       },
+      maxHeight: {
+        450: '450px'
+      },
       colors: {
         primary: 'hsl(14, 86%, 42%)',
         secondary: 'hsl(159, 69%, 38%)',
