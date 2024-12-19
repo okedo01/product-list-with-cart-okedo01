@@ -1,23 +1,58 @@
 const listItemsHTML = document.querySelector('.list-items');
 const emptyCart = document.querySelector('.cart-empty');
 const selectedCart = document.querySelector('.cart-selected');
+const quantity = document.querySelector('#quantity');
 let listItems = [];
+let carts = [];
 
 listItemsHTML.addEventListener('click', (e) => {
     if(e.target.classList.contains('add-to-cart')) {
-        alert("add to cart button");
+
         emptyCart.style.display = 'none';
         selectedCart.style.display = 'block';
+
+        let productId = e.target.parentElement.dataset.id;
+        addToCart(productId);
+        
     }
     
 })
 
+const addToCart = (productId) => {
+    let productIndexInCart = carts.findIndex((index) => {
+        return index.productId === productId;
+    })
+
+    if(carts.length <= 0) {
+        carts = [{
+            productId: productId,
+            quantity: 1
+        }]
+    } else  if(productIndexInCart < 0) {
+        carts.push({
+            productId: productId,
+            quantity: 1
+        })
+    } else {
+        carts[productIndexInCart].quantity = carts[productIndexInCart].quantity + 1;
+    }
+
+    addCartToHTML(carts);
+    
+}
+
+const addCartToHTML = () => {
+    console.log(carts);
+    
+}
+
 const addDataToHTML = (data) => {
     listItemsHTML.innerHTML = '';
     if(listItems.length > 0) {
-        listItems.forEach(item => {
-            const listDiv = document.createElement('div')
-            listDiv.classList.add('list-items');
+        listItems.forEach((item, index) => {
+            const listDiv = document.createElement('div');
+
+            listDiv.setAttribute("data-id", index + 1);
             
             listDiv.innerHTML = `
             
