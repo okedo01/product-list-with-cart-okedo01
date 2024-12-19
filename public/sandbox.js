@@ -28,7 +28,7 @@ const addToCart = (productId) => {
             productId: productId,
             quantity: 1
         }]
-    } else  if(productIndexInCart < 0) {
+    } else if(productIndexInCart < 0) {
         carts.push({
             productId: productId,
             quantity: 1
@@ -42,7 +42,34 @@ const addToCart = (productId) => {
 }
 
 const addCartToHTML = () => {
-    console.log(carts);
+    selectedCart.innerHTML = '';
+
+    if(carts.length > 0) {
+        carts.forEach(cart => {
+            let cartDiv = document.createElement('div');
+            cartDiv.classList.add('cart')
+
+            let productIndex = listItems.findIndex((value) => {
+                return value.id === cart.productId;
+            })
+
+            let productDets = listItems[productIndex];
+
+            cartDiv.innerHTML = `
+           
+                <h3 class="py-5 text-primary text-xl text-center">Your cart <span id="quantity">(${cart.quantity})</span></h3>
+                <div class="flex justify-between mt-5">
+                    <p>Order total:</p>
+                    <div class="total">
+                        $${productDets.price * cart.quantity}
+                    </div>
+                </div>
+
+            `;
+            selectedCart.appendChild(cartDiv);
+
+        })
+    }
     
 }
 
@@ -50,11 +77,11 @@ const addDataToHTML = (data) => {
     listItemsHTML.innerHTML = '';
     if(listItems.length > 0) {
         listItems.forEach((item, index) => {
-            const listDiv = document.createElement('div');
+            const productDiv = document.createElement('div');
 
-            listDiv.setAttribute("data-id", index + 1);
+            productDiv.setAttribute("data-id", index + 1);
             
-            listDiv.innerHTML = `
+            productDiv.innerHTML = `
             
                 <img src="./${item.image.thumbnail}" alt="Baklava" class="w-full rounded-2xl">
                 <button class="add-to-cart flex justify-center items-center gap-4 bg-rose50 rounded-3xl px-7 py-3 cursor-pointer">
@@ -67,7 +94,7 @@ const addDataToHTML = (data) => {
                     <div class="text-primary">$${item.price}</div>
                 </div>
             `
-            listItemsHTML.appendChild(listDiv)  
+            listItemsHTML.appendChild(productDiv)  
         })
     }
 }
