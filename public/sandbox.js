@@ -1,12 +1,18 @@
 const listItemsHTML = document.querySelector('.list-items');
 const emptyCart = document.querySelector('.cart-empty');
 const selectedCart = document.querySelector('.result');
-const deleteIcon = document.querySelector('.delete');
-
-console.log(deleteIcon);
 
 let listFood = [];
 let listCarts = [];
+
+selectedCart.addEventListener('click', (e) => {
+    const deleteIcon = e.target.classList.contains('delete');
+    
+    if(deleteIcon) {
+        console.log(selectedCart.parentElement.children);
+        
+    }
+})
 
 listItemsHTML.addEventListener('click', (e) => {
     if(e.target.classList.contains('add-to-cart')) {
