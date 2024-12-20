@@ -11,7 +11,7 @@ module.exports = {
         400: '400px'
       },
       maxHeight: {
-        450: '450px'
+        470: '470px'
       },
       colors: {
         primary: 'hsl(14, 86%, 42%)',

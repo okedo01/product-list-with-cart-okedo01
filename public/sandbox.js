@@ -1,9 +1,9 @@
 const listItemsHTML = document.querySelector('.list-items');
 const emptyCart = document.querySelector('.cart-empty');
-const selectedCart = document.querySelector('.cart-selected');
+const selectedCart = document.querySelector('.result');
 const quantity = document.querySelector('#quantity');
-let listItems = [];
-let carts = [];
+let listFood = [];
+let listCarts = [];
 
 listItemsHTML.addEventListener('click', (e) => {
     if(e.target.classList.contains('add-to-cart')) {
@@ -11,77 +11,77 @@ listItemsHTML.addEventListener('click', (e) => {
         emptyCart.style.display = 'none';
         selectedCart.style.display = 'block';
 
-        let productId = e.target.parentElement.dataset.id;
-        addToCart(productId);
+        let foodId = e.target.parentElement.dataset.id;
+        addToCart(foodId);
         
     }
     
 })
 
-const addToCart = (productId) => {
-    let productIndexInCart = carts.findIndex((index) => {
-        return index.productId === productId;
+const addToCart = (foodId) => {
+    let foodIndexInCart = listCarts.findIndex((index) => {
+        return index.foodId === foodId;
     })
 
-    if(carts.length <= 0) {
-        carts = [{
-            productId: productId,
+    if(listCarts.length <= 0) {
+        listCarts = [{
+            foodId: foodId,
             quantity: 1
         }]
-    } else if(productIndexInCart < 0) {
-        carts.push({
-            productId: productId,
+    } else if(foodIndexInCart < 0) {
+        listCarts.push({
+            foodId: foodId,
             quantity: 1
         })
     } else {
-        carts[productIndexInCart].quantity = carts[productIndexInCart].quantity + 1;
+        listCarts[foodIndexInCart].quantity = listCarts[foodIndexInCart].quantity + 1;
     }
-
-    addCartToHTML(carts);
+    
+    addCartToHTML(listCarts);
     
 }
 
 const addCartToHTML = () => {
-    selectedCart.innerHTML = '';
-
-    if(carts.length > 0) {
-        carts.forEach(cart => {
+    selectedCart.innerHTML = ``;
+    if(listCarts.length > 0) {
+        listCarts.forEach((cart, index) => {
             let cartDiv = document.createElement('div');
-            cartDiv.classList.add('cart')
+            cartDiv.classList.add('result');
 
-            let productIndex = listItems.findIndex((value) => {
-                return value.id === cart.productId;
-            })
+            let posOfFoodInCart = listFood.findIndex((food, idx) => idx + 1 === parseInt(cart.foodId));
+            let info = listFood[posOfFoodInCart]
+            console.log(info);
+            let totalPrice = 0;
+            let totalItemPrice = info.price * cart.quantity;
 
-            let productDets = listItems[productIndex];
-
+            document.querySelector('.total-price').innerHTML = (totalPrice + totalItemPrice).toFixed(2);
             cartDiv.innerHTML = `
-           
-                <h3 class="py-5 text-primary text-xl text-center">Your cart <span id="quantity">(${cart.quantity})</span></h3>
-                <div class="flex justify-between mt-5">
-                    <p>Order total:</p>
-                    <div class="total">
-                        $${productDets.price * cart.quantity}
+                
+                <div>
+                    <p>${info.name}</p>
+                    <div class="flex justify-between">
+                        <p>x${cart.quantity}</p>
+                        <div>itemPrice: ${info.price.toFixed(2)}</div>
+                        <div>totalPrice: ${totalItemPrice.toFixed(2)}</div>
+                        <img src="./assets/images/icon-remove-item.svg" class="border-2 border-r-rose100 bg-rose100 rounded-3xl p-1 cursor-pointer">
                     </div>
+                    
                 </div>
-
             `;
             selectedCart.appendChild(cartDiv);
-
         })
     }
-    
 }
 
 const addDataToHTML = (data) => {
     listItemsHTML.innerHTML = '';
-    if(listItems.length > 0) {
-        listItems.forEach((item, index) => {
-            const productDiv = document.createElement('div');
+    if(listFood.length > 0) {
+        listFood.forEach((item, index) => {
+            let foodDiv = document.createElement('div');
 
-            productDiv.setAttribute("data-id", index + 1);
+            foodDiv.setAttribute("data-id", index + 1);
             
-            productDiv.innerHTML = `
+            foodDiv.innerHTML = `
             
                 <img src="./${item.image.thumbnail}" alt="Baklava" class="w-full rounded-2xl">
                 <button class="add-to-cart flex justify-center items-center gap-4 bg-rose50 rounded-3xl px-7 py-3 cursor-pointer">
@@ -91,10 +91,10 @@ const addDataToHTML = (data) => {
                 <div class="my-5">
                     <h4 class="text-rose400 text-sm">${item.category}</h4>
                     <p class="text-rose900">${item.name}</p>
-                    <div class="text-primary">$${item.price}</div>
+                    <div class="text-primary">$${item.price.toFixed(2)}</div>
                 </div>
             `
-            listItemsHTML.appendChild(productDiv)  
+            listItemsHTML.appendChild(foodDiv)  
         })
     }
 }
@@ -109,7 +109,7 @@ const getData = () => {
             
         })
         .then(data => {
-            listItems = data
+            listFood = data
             addDataToHTML(data);
         })
         .catch(err => {
