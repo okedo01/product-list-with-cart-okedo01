@@ -21,7 +21,8 @@ module.exports = {
         rose300: 'hsl(14, 25%, 72%)',
         rose400: 'hsl(7, 20%, 60%)',
         rose500: 'hsl(12, 20%, 44%)',
-        rose900: 'hsl(14, 65%, 9%)'
+        rose900: 'hsl(14, 65%, 9%)',
+        blue: 'hsl(228, 45%, 44%)'
       },
       fontSize: {
         names: '16px'
