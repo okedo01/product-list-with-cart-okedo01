@@ -834,3 +834,8 @@ video {
   font-size: 0.875rem;
   line-height: 1.25rem;
 }
+
+.attribution a{
+  --tw-text-opacity: 1;
+  color: hsl(228 45% 44% / var(--tw-text-opacity, 1));
+}

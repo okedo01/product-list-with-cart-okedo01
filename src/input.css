@@ -7,3 +7,6 @@
 .attribution {
     @apply text-sm text-center
 }
+.attribution a{
+    @apply text-blue
+}
