@@ -859,6 +859,10 @@ video {
   color: hsl(14 65% 9% / var(--tw-text-opacity, 1));
 }
 
+.filter{
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+}
+
 .attribution{
   text-align: center;
   font-size: 0.875rem;
