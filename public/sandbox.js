@@ -9,7 +9,7 @@ selectedCart.addEventListener('click', (e) => {
     const deleteIcon = e.target.classList.contains('delete');
     
     if(deleteIcon) {
-        console.log(selectedCart.parentElement.children);
+        console.log(selectedCart.parentElement);
         
     }
 })
