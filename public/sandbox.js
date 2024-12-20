@@ -1,7 +1,10 @@
 const listItemsHTML = document.querySelector('.list-items');
 const emptyCart = document.querySelector('.cart-empty');
 const selectedCart = document.querySelector('.result');
-const quantity = document.querySelector('#quantity');
+const deleteIcon = document.querySelector('.delete');
+
+console.log(deleteIcon);
+
 let listFood = [];
 let listCarts = [];
 
@@ -43,6 +46,10 @@ const addToCart = (foodId) => {
 
 const addCartToHTML = () => {
     selectedCart.innerHTML = ``;
+
+    let totalPrice = 0;
+    let quantity = 0;
+
     if(listCarts.length > 0) {
         listCarts.forEach((cart, index) => {
             let cartDiv = document.createElement('div');
@@ -50,26 +57,31 @@ const addCartToHTML = () => {
 
             let posOfFoodInCart = listFood.findIndex((food, idx) => idx + 1 === parseInt(cart.foodId));
             let info = listFood[posOfFoodInCart]
-            console.log(info);
-            let totalPrice = 0;
+            
             let totalItemPrice = info.price * cart.quantity;
 
-            document.querySelector('.total-price').innerHTML = (totalPrice + totalItemPrice).toFixed(2);
+            totalPrice = totalPrice + totalItemPrice;
+
+            quantity = quantity + cart.quantity;
+            
             cartDiv.innerHTML = `
                 
-                <div>
+                <div class="mb-3 border-b-2 border-l-rose300 pb-3">
                     <p>${info.name}</p>
                     <div class="flex justify-between">
                         <p>x${cart.quantity}</p>
                         <div>itemPrice: ${info.price.toFixed(2)}</div>
                         <div>totalPrice: ${totalItemPrice.toFixed(2)}</div>
-                        <img src="./assets/images/icon-remove-item.svg" class="border-2 border-r-rose100 bg-rose100 rounded-3xl p-1 cursor-pointer">
+                        <img src="./assets/images/icon-remove-item.svg" class="delete border-2 border-r-rose100 bg-rose100 rounded-3xl p-1 cursor-pointer">
                     </div>
                     
                 </div>
             `;
             selectedCart.appendChild(cartDiv);
-        })
+            
+        });
+        document.querySelector('.total-price').innerHTML = totalPrice.toFixed(2);
+        document.querySelector('#quantity').innerHTML = `<span>(${quantity})</span>`;
     }
 }
 
