@@ -107,6 +107,12 @@ const addDataToHTML = (data) => {
                     <img src="./assets/images/icon-add-to-cart.svg" alt="add-to-cart">
                     Add to Cart
                 </button>
+                <div>
+                    <div class="icons flex justify-between items-center py-4 bg-primary">
+                        <img src="./assets/images/icon-increment-quantity.svg" alt="icon-increment-quantity">
+                        <img src="./assets/images/icon-decrement-quantity.svg" alt="icon-decrement-quantity">
+                    </div>
+                </div>
                 <div class="my-5">
                     <h4 class="text-rose400 text-sm">${item.category}</h4>
                     <p class="text-rose900">${item.name}</p>
