@@ -63,7 +63,7 @@ const addCartToHTML = () => {
             cartDiv.classList.add('result');
 
             let posOfFoodInCart = listFood.findIndex((food, idx) => idx + 1 === parseInt(cart.foodId));
-            let info = listFood[posOfFoodInCart]
+            let info = listFood[posOfFoodInCart];
             
             let totalItemPrice = info.price * cart.quantity;
 
@@ -94,6 +94,7 @@ const addCartToHTML = () => {
 
 const addDataToHTML = (data) => {
     listItemsHTML.innerHTML = '';
+    let quantity = 0;
     if(listFood.length > 0) {
         listFood.forEach((item, index) => {
             let foodDiv = document.createElement('div');
@@ -108,8 +109,9 @@ const addDataToHTML = (data) => {
                     Add to Cart
                 </button>
                 <div>
-                    <div class="icons flex justify-between items-center py-4 bg-primary">
+                    <div class="icons flex justify-between items-center py-3 px-4 bg-primary rounded-3xl">
                         <img src="./assets/images/icon-increment-quantity.svg" alt="icon-increment-quantity">
+                        <p>${quantity}</p>
                         <img src="./assets/images/icon-decrement-quantity.svg" alt="icon-decrement-quantity">
                     </div>
                 </div>
