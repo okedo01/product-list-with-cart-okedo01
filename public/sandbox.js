@@ -6,13 +6,27 @@ let listFood = [];
 let listCarts = [];
 
 listItemsHTML.addEventListener('click', (e) => {
-    if(e.target.classList.contains('add-to-cart')) {
+    const addToCartBtn = e.target.closest('.add-to-cart');
+    const incrementBtn = e.target.closest('.increment');
+    const decrementBtn = e.target.closest('.decrement');
+
+    // if(e.target.classList.contains('add-to-cart')) {
+    if(addToCartBtn) {
 
         emptyCart.style.display = 'none';
         selectedCart.style.display = 'block';
 
         let foodId = e.target.parentElement.dataset.id;
         addToCart(foodId);   
+
+        const parentDiv = addToCartBtn.parentElement;
+        parentDiv.innerHTML = `
+            <div class="icons flex justify-between items-center py-3 px-4 bg-primary rounded-3xl">
+                    <img src="./assets/images/icon-increment-quantity.svg" alt="icon-increment-quantity" class="increment bg-rose400 rounded-xl p-2 cursor-pointer">
+                    <p>${foodId}</p>
+                <img src="./assets/images/icon-decrement-quantity.svg" alt="icon-decrement-quantity" class="decrement bg-rose400 rounded-xl px-2 py-3 cursor-pointer">
+            </div>   
+        `;
     }
 })
 
@@ -20,9 +34,7 @@ selectedCart.addEventListener('click', (e) => {
     const deleteIcon = e.target.classList.contains('delete');
     
     if(deleteIcon) {
-        console.log(deleteIcon);
         
-    
     }
 })
 
@@ -111,13 +123,7 @@ const addDataToHTML = (data) => {
                     <img src="./assets/images/icon-add-to-cart.svg" alt="add-to-cart">
                     Add to Cart
                 </button>
-                <div>
-                    <div class="icons flex justify-between items-center py-3 px-4 bg-primary rounded-3xl">
-                        <img src="./assets/images/icon-increment-quantity.svg" alt="icon-increment-quantity" class="bg-rose400 rounded-xl p-2 cursor-pointer">
-                        <p>${quantity}</p>
-                        <img src="./assets/images/icon-decrement-quantity.svg" alt="icon-decrement-quantity" class="bg-rose400 rounded-xl px-2 py-3 cursor-pointer">
-                    </div>
-                </div>
+                
                 <div class="my-5">
                     <h4 class="text-rose400 text-sm">${item.category}</h4>
                     <p class="text-rose900">${item.name}</p>
