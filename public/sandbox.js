@@ -9,7 +9,7 @@ listItemsHTML.addEventListener('click', (e) => {
     const addToCartBtn = e.target.closest('.add-to-cart');
     const incrementBtn = e.target.closest('.increment');
     const decrementBtn = e.target.closest('.decrement');
-
+    
     // if(e.target.classList.contains('add-to-cart')) {
     if(addToCartBtn) {
 
@@ -20,6 +20,8 @@ listItemsHTML.addEventListener('click', (e) => {
         addToCart(foodId);   
 
         const parentDiv = addToCartBtn.parentElement;
+        console.log(parentDiv);
+        
         parentDiv.innerHTML = `
             <div class="icons flex justify-between items-center py-3 px-4 bg-primary rounded-3xl">
                     <img src="./assets/images/icon-increment-quantity.svg" alt="icon-increment-quantity" class="increment bg-rose400 rounded-xl p-2 cursor-pointer">
@@ -27,16 +29,38 @@ listItemsHTML.addEventListener('click', (e) => {
                 <img src="./assets/images/icon-decrement-quantity.svg" alt="icon-decrement-quantity" class="decrement bg-rose400 rounded-xl px-2 py-3 cursor-pointer">
             </div>   
         `;
+    }else if(incrementBtn) {
+        // let foodId = incrementBtn.closest('[data-id]').dataset.id;
+        let foodId = e.target.parentElement.parentElement.dataset.id;
+        incrementQuantity(foodId)
+    }else if(decrementBtn) {
+        // let foodId = decrementBtn.closest('[data-id]').dataset.id;
+        let foodId = e.target.parentElement.parentElement.dataset.id;
+        decrementQuantity(foodId)
     }
 })
 
 selectedCart.addEventListener('click', (e) => {
-    const deleteIcon = e.target.classList.contains('delete');
+    // const deleteId = e.target.parentElement.parentElement;
+    const deleteIcon = e.target.closest('.delete');
     
     if(deleteIcon) {
-        
+        // let deleteId = e.target.closest('.delete').dataset.id;
+        let deleteId = e.target.parentElement;
+        deleteFromCart(deleteId);
     }
+    
 })
+
+const deleteFromCart = (deleteId) => {
+    const deleteIndex = listFood.findIndex(value => {
+        return value.deleteId === deleteId;
+    })
+    if(deleteIndex) {
+        deleteId.remove();
+    }
+    updateCart();
+}
 
 const addToCart = (foodId) => {
     let foodIndexInCart = listCarts.findIndex((index) => {
@@ -56,10 +80,37 @@ const addToCart = (foodId) => {
     } else {
         listCarts[foodIndexInCart].quantity = listCarts[foodIndexInCart].quantity + 1;
     }
-    
+    updateCart();
+}
+
+const incrementQuantity = (foodId) => {
+    let foodIndexInCart = listCarts.findIndex(value => {
+        return value.foodId === foodId;
+    })
+    if(foodIndexInCart !== -1) {
+        listCarts[foodIndexInCart].quantity++;
+    }
+    updateCart();
+}
+
+const decrementQuantity = (foodId) => {
+    let foodIndexInCart = listCarts.findIndex(value => {
+        return value.foodId === foodId;
+    })
+    if(foodIndexInCart !== -1) {
+        listCarts[foodIndexInCart].quantity--;
+        if(listCarts[foodIndexInCart].quantity === 0) {
+            listCarts.splice(foodIndexInCart, 1);
+        }
+    }
+    updateCart();
+}
+
+
+
+const updateCart = () => {
     addCartToHTML(listCarts);
     addCartToLocalStorage();
-    
 }
 
 addCartToLocalStorage = () => {
