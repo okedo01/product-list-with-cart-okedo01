@@ -41,24 +41,25 @@ listItemsHTML.addEventListener('click', (e) => {
 })
 
 selectedCart.addEventListener('click', (e) => {
-    // const deleteId = e.target.parentElement.parentElement;
-    const deleteIcon = e.target.closest('.delete');
-    
-    if(deleteIcon) {
-        // let deleteId = e.target.closest('.delete').dataset.id;
-        let deleteId = e.target.parentElement;
-        deleteFromCart(deleteId);
-    }
-    
-})
+    const deleteIcon = e.target.closest('.delete'); // Check if delete button is clicked
+    // const deleteIcon = e.target.parentElement.lastElementChild;
 
-const deleteFromCart = (deleteId) => {
-    const deleteIndex = listFood.findIndex(value => {
-        return value.deleteId === deleteId;
-    })
-    if(deleteIndex) {
-        deleteId.remove();
+    if (deleteIcon) {
+        deleteFromCart(deleteIcon); // Pass the clicked delete icon to the function
     }
+});
+
+const deleteFromCart = (deleteIcon) => {
+    // const foodIdi = deleteIcon.closest('[data-id]').dataset.id;
+    let foodId = deleteIcon.parentElement.parentElement.dataset.id;
+    // const deleteIndex = listCarts.findIndex(value => {
+    //     return value.foodId === foodId;
+    // })
+    // if (deleteIndex !== -1) {
+    //     listCarts.splice(deleteIndex, 1); // Remove the item from the array
+    // }
+    console.log(foodId);
+    
     updateCart();
 }
 
