@@ -52,12 +52,12 @@ selectedCart.addEventListener('click', (e) => {
 const deleteFromCart = (deleteIcon) => {
     // const foodIdi = deleteIcon.closest('[data-id]').dataset.id;
     let foodId = deleteIcon.parentElement.parentElement.dataset.id;
-    // const deleteIndex = listCarts.findIndex(value => {
-    //     return value.foodId === foodId;
-    // })
-    // if (deleteIndex !== -1) {
-    //     listCarts.splice(deleteIndex, 1); // Remove the item from the array
-    // }
+    const deleteIndex = listCarts.findIndex(value => {
+        return value.foodId === foodId;
+    })
+    if (deleteIndex !== -1) {
+        listCarts.splice(deleteIndex, 1); // Remove the item from the array
+    }
     console.log(foodId);
     
     updateCart();
